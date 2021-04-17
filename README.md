@@ -1,4 +1,4 @@
-#learn
+# learn
 
 These are some Javascript files I wrote to add watermarks to image files or create personalized questions in Blackboard Learn exams. This was done to add some extra security measures (in a time of rampant cheating). In my case they worked really well and let me catch dozens of cheaters. I am sharing them with the hope that they may be useful for someone else.
 
