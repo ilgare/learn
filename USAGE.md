@@ -7,7 +7,7 @@ There are two kinds of scripts here:
 
 ## How to upload and call the Javascript files
 
-It is best to upload the scripts to the Content Collection of the course. The way I find easiest as follows:
+It is best to upload the scripts to the Content Collection of the course. The way I find easiest is as follows:
 
 - Create a sample/toy question and add the file(s) as attachment(s).
 - Save the question.
@@ -15,9 +15,9 @@ It is best to upload the scripts to the Content Collection of the course. The wa
 
 ![Object id](img/upload.png)
 
-In this example we see that the address of the file `wmark.js` is `https://learn.mydomain.edu/bbcswebdav/xid-5888302_1`. So, when we prepare the exam questions which use this scripts, we are going to load it by inserting
+In this example we see that the address of the file `wmark.js` is `https://learn.mydomain.edu/bbcswebdav/xid-5887643_1`. So, when we prepare the exam questions which use this scripts, we are going to load it by inserting
     
-    <script src="https://learn.mydomain.edu/bbcswebdav/xid-5888302_1" ></script>
+    <script src="https://learn.mydomain.edu/bbcswebdav/xid-5887643_1" ></script>
     
 into the HTML editor.
 
@@ -29,27 +29,27 @@ Also, Blackboard Learn seems to truncate the student name string to 37 character
 
 ## Watermarking
 
-The file for this example is `wmark.js`. It main method is `mim()` which takes three parameters: The `id`  if the image to be watermarked, the font size and the position of the upper edge of the strip, measured from the top (a value of, say, `0.43` means 43% of the total height).
+The file for this example is [wmark.js](wmark.js). It main method is `mim()` which takes three parameters: The `id`  if the image to be watermarked, the font size and the position of the upper edge of the strip, measured from the top (a value of, say, `0.43` means 43% of the total height).
 
 Here is a sample application:
 
-~[Sample](img/sample.jpg)
+![Sample](img/sample.jpg)
 
 You can use the [testpage.html](testpage.html) and [wm_test.js](wm_test.js) files to locally load the image file and test the parameters. To generate the cryptic "identifier" Ceasar encryption plus some other operations are used. The shift parameter and the alpha value for the watermark are hardcoded in the file.
 
 Once the parameters determined, we prepare the actual test question:
 
 1. Prepare and save the question as usual, inserting the image into the editor:
-    [Prep1](img/prep1.png)
+    ![Prep1](img/prep1.png)
 2. Re-edit the question and open the HTML editor. Initially, the image element will have no `id` tag:
-    [Prep2](img/prep2.png)
+    ![Prep2](img/prep2.png)
 3. We will add the `id` tag to the image element. It should be a unique identifier in the whole HTML document, so do not use generic names that may possibly appear elsewhere. Something like `q2` should be good enough. Then we will insert the code that loads the script and calls the watermark function `mim()`:
         
         <script src="https://learn.mydomain.edu/bbcswebdav/xid-5887643_1"> </script>
         <script> mim ( "q2" , 0.45 , 40 ) ;  </script>
 
     Here is how it looks in the editor:
-    [Prep3](img/prep3.png)
+    ![Prep3](img/prep3.png)
     See the Caveats section in [README.md](README.md) on the use of spaces above.
 4. Save the question (submit). The script should now be working.
 
