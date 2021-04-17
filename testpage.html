@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html><meta charset="utf-8">
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" /> <!-- reset css -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+    body{ background-color: ivory; }
+    #canvas{border:1px solid red;}
+</style>
+
+<script>
+	
+	var myglob;
+	
+$(function(){
+
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+
+    $("#fileInput").change(function(e){
+        var URL = window.webkitURL || window.URL;
+        myglob = e.target.files[0];
+        var url = URL.createObjectURL( myglob );
+        var img = new Image();
+        img.onload = function() {
+                canvas.width=img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img,0,0);
+
+                var sp2 = document.getElementById("spbx2");
+				var val2 = sp2.value * 0.01;
+                var sp3 = document.getElementById("spbx3");
+				var val3 = sp3.value;			             
+
+                wm_test (canvas, val3, 0.025, val2 , 12);
+
+        }
+        img.src = url;
+    });
+
+    $("#save").click(function(){
+        var html="<p>Right-click on image below and Save-Picture-As</p>";
+        html+="<img src='"+canvas.toDataURL()+"' alt='from canvas'/>";
+        var tab=window.open();
+        tab.document.write(html);        
+    });
+    
+    $("#reload").click(function(){
+        var URL = window.webkitURL || window.URL;
+        var url = URL.createObjectURL(myglob);
+        var img = new Image();
+        img.onload = function() {
+                canvas.width=img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img,0,0);
+                
+                var sp2 = document.getElementById("spbx2");
+				var val2 = sp2.value * 0.01;
+                var sp3 = document.getElementById("spbx3");
+				var val3 = sp3.value;					
+
+
+                wm_test (canvas, val3, 0.025, val2 , 1);
+
+        }
+        img.src = url;      
+    });
+
+}); // end $(function(){});
+</script>
+</head>
+
+
+
+<body>
+
+<p><span id="container">
+  Grey strip: <input id="spbx2" type="number" min="1" max="100" step="1" value="55" required>
+  Font size: <input id="spbx3" type="number" min="10" max="80" step="1" value="40" required>
+</span></p>
+    <input type="file" id="fileInput">    
+    <button id="save">Save</button><button id="reload">Reload</button><br>
+    <canvas id="canvas" width=300 height=300></canvas>
+
+
+<script src="wmark_test.js"></script>
+
+
+</body>
+</html> 
