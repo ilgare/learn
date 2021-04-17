@@ -49,7 +49,9 @@ Once the parameters determined, we prepare the actual test question:
         <script> mim ( "q2" , 0.45 , 40 ) ;  </script>
 
     Here is how it looks in the editor:
-        ![Prep3](img/prep3.png)
+    
+      ![Prep3](img/prep3.png)
+    
     See the Caveats section in [README.md](README.md) on the use of spaces above.
 4. Save the question (submit). The script should now be working.
 
